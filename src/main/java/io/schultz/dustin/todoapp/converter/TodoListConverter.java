@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Component
 public class TodoListConverter implements Converter<TodoList, TodoListDto> {
 
-    private TodoItemConverter itemConverter;
+    private final TodoItemConverter itemConverter;
 
     @Inject
     public TodoListConverter(TodoItemConverter itemConverter) {

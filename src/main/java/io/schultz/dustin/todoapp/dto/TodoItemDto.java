@@ -2,8 +2,8 @@ package io.schultz.dustin.todoapp.dto;
 
 public class TodoItemDto {
 
-    private String value;
-    private boolean complete;
+    private final String value;
+    private final boolean complete;
 
     public TodoItemDto(String value, boolean complete) {
         this.value = value;

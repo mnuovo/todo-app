@@ -8,23 +8,21 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 public class TodoService {
 
-    private TodoListConverter todoListConverter;
-    private TodoRepository todoRepository;
+    private final TodoListConverter todoListConverter;
+    private final TodoRepository todoRepository;
 
     @Inject
-    public TodoService(TodoListConverter todoListConverter,
-                       TodoRepository todoRepository) {
+    public TodoService(TodoListConverter todoListConverter, TodoRepository todoRepository) {
         this.todoListConverter = todoListConverter;
         this.todoRepository = todoRepository;
     }
 
     public List<TodoListDto> getTodoLists() {
-       return StreamSupport.stream(todoRepository.findAll().spliterator(), false)
+       return todoRepository.findAll().stream()
                 .map(todoListConverter::convert)
                 .collect(Collectors.toList());
     }

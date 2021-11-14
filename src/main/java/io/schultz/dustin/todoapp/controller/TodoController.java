@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/todo")
 public class TodoController {
 
-    private TodoService todoService;
+    private final TodoService todoService;
 
     @Inject
     public TodoController(TodoService todoService) {
